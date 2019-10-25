@@ -1999,7 +1999,7 @@ class Parser
 	#elseif (js || flash9 || java)
 	public static var PATTERN_NON_PRINTABLE         = ~/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x84\x86-\x9F\uD800-\uDFFF\uFFFE\uFFFF]/u;	
 	#elseif (hl)
-	public static var PATTERN_NON_PRINTABLE         = ~/[\x{00}-\x{08}\x{0B}\x{0C}\x{0E}-\x{1F}\x{7F}]/u;
+	public static var PATTERN_NON_PRINTABLE         = ~/[\x{00}-\x{08}\x{0B}\x{0C}\x{0E}-\x{1F}\x{7F}]/;
 	#else
 	#error "Compilation target not supported due to lack of Unicode RegEx support."
 	#end
@@ -2009,7 +2009,7 @@ class Parser
 	#elseif (js || flash9 || java)
 	public static var PATTERN_NON_ASCII_LINE_BREAKS = ~/[\x85\u2028\u2029]/u;
 	#elseif (hl)
-	public static var PATTERN_NON_ASCII_LINE_BREAKS = ~/[\x85\u]/u;
+	public static var PATTERN_NON_ASCII_LINE_BREAKS = ~/[\x{85}]/;
 	#else
 	#error "Compilation target not supported due to lack of Unicode RegEx support."
 	#end
