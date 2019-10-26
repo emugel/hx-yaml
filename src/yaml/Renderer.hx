@@ -3,7 +3,11 @@ package yaml;
 import Type;
 import yaml.util.StringMap;
 import yaml.util.IntMap;
-import haxe.Utf8;
+// hijack haxe.Utf8 to our own modified version
+#if false import haxe.Utf8;
+#else import yaml.Utf8;
+#end
+
 import haxe.io.Bytes;
 import yaml.YamlType;
 import yaml.schema.DefaultSchema;

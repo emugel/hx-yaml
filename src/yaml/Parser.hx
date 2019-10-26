@@ -4,7 +4,11 @@ import Type;
 import yaml.util.ObjectMap;
 import yaml.util.StringMap;
 import yaml.util.IntMap;
-import haxe.Utf8;
+// hijack haxe.Utf8 to our own modified version
+#if false import haxe.Utf8;
+#else import yaml.Utf8;
+#end
+
 import haxe.PosInfos;
 import yaml.schema.DefaultSchema;
 import yaml.schema.SafeSchema;
@@ -1998,10 +2002,6 @@ class Parser
 	public static var PATTERN_NON_PRINTABLE         = ~/[\x{00}-\x{08}\x{0B}\x{0C}\x{0E}-\x{1F}\x{7F}-\x{84}\x{86}-\x{9F}\x{FFFE}\x{FFFF}]/u;
 	#elseif (js || flash9 || java)
 	public static var PATTERN_NON_PRINTABLE         = ~/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x84\x86-\x9F\uD800-\uDFFF\uFFFE\uFFFF]/u;	
-	#elseif (hl)
-    //                                                  even that fails with Regexp compilation error : range out of order ins in [\x{00}-\x{08}\x{0B}\x{0C}\x{0E}-\x{1F}\x{7F}]
-	// public static var PATTERN_NON_PRINTABLE         = ~/[\x{00}-\x{08}\x{0B}\x{0C}\x{0E}-\x{1F}\x{7F}]/;
-	public static var PATTERN_NON_PRINTABLE         = ~/[]/;
 	#else
 	#error "Compilation target not supported due to lack of Unicode RegEx support."
 	#end
@@ -2010,8 +2010,6 @@ class Parser
 	public static var PATTERN_NON_ASCII_LINE_BREAKS = ~/[\x{85}\x{2028}\x{2029}]/u;
 	#elseif (js || flash9 || java)
 	public static var PATTERN_NON_ASCII_LINE_BREAKS = ~/[\x85\u2028\u2029]/u;
-	#elseif (hl)
-	public static var PATTERN_NON_ASCII_LINE_BREAKS = ~/[\x{85}]/;
 	#else
 	#error "Compilation target not supported due to lack of Unicode RegEx support."
 	#end
