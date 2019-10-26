@@ -1,18 +1,20 @@
+    [fork] Ok it works, waiting for better days when I can use the original hx-yaml and Haxe 4 / HashLink
+
 # What's going on in this fork
 
-Since Haxe 4 deprecates `haxe.Utf8` and since its `encode` and `decode` throw, and since **HashLink** does not have utf8 regex classes, it means this awesome **hx-yaml** library is unusable for the time being, as of 2019 October, the 27th, date of release of Haxe 4.0.
+* Since Haxe 4 deprecates `haxe.Utf8` 
+* Since Utf8 `encode` and `decode` throw at least on **HashLink**,
+* Since **HashLink** does not have utf8 regex classes, 
+...it means this **hx-yaml** library is unusable for the time being, (as of 2019 October, the 27th, date of release of Haxe 4.0).
 
-Say for a project we have some Yaml for config file **and** we don't care about Utf8. In that case we can use this **ugly** fork.
+Say we don't care too much for Utf8, because we use yaml in config file that nobody else can edit. In that case we can use this fork.
 
-What it does:
+* regex classes (i.e. what comes between `[..]` in a regex) for **HashLink** are changed so as to completely disregard special multibyte characters.
+* `Utf8.encode()` and `Utf8.decode()` are both changed the identify function (they just return their parameter), and the deprecation message is removed.
 
-* regex classes (i.e. what comes between `[..]` in a regex) for **HashLink** are disallowed.
-* `Utf8.encode()` and `Utf8.decode()` both are the identify function (they just return their parameter).
+*This is very dirty and doesn't do justice to hx-yaml, but one day things will hopefully evolve so I get rid of those fixes, and for the time being I need this...*
 
-This is dirty as can be and it really doesn't make justice for this lib, but for the time being it is useful for me.
-
-
-Follows the original README:
+Anyway, the original README follows...
 
 # Overview
 
