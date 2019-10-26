@@ -1,10 +1,16 @@
 package yaml.util;
 
+#if false
+import haxe.Utf8;
+#else
+import yaml.Utf8;
+#end
+
 class Utf8
 {
 	public static function substring(value:String, startIndex:Int, ?endIndex:Null<Int>):String
 	{
-		var size = haxe.Utf8.length(value);
+		var size = Utf8.length(value);
 		var pos = startIndex;
 		var length = 0;
 		
@@ -22,6 +28,6 @@ class Utf8
 			length = endIndex - pos;
 		}
 		
-		return haxe.Utf8.sub(value, pos, length);
+		return Utf8.sub(value, pos, length);
 	}
 }
