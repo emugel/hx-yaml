@@ -307,7 +307,7 @@ class Parser
 				}
 			}
 
-			result += _result;
+			result += Std.string(_result);
 		}
 	}
 	
